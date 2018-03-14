@@ -19,7 +19,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// app.use((req, res) => {
+// app.use((req, res, next) => {
 //     res.render('maintenance.hbs');
 // });
 
@@ -46,6 +46,13 @@ app.get('/about', (req, res) =>{
     });
 });
 
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'My github projects',
+        welcomeMessage: 'welcome to my projects arena'
+    });
+});
+
 app.get('/bad', (req, res) => {
     res.send({
         errorMessage: 'Unable to fetch page'
@@ -55,11 +62,3 @@ app.get('/bad', (req, res) => {
 app.listen(port, () => {
     console.log(`Server is up and running on port: ${port}`);
 });
-
-// res.send({
-//     name: 'Raghu Bandaru',
-//     likes: [
-//         'cricket',
-//         'tennis'
-//     ]
-// });
