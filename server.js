@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const hbs = require('hbs');
 
+const port = process.env.PORT || 3000;
 var app = express();
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
@@ -28,14 +29,14 @@ hbs.registerHelper('getCurrentYear', () => {
     return new Date().getFullYear();
 });
 
-hbs.registerHelper('pruthviReddy', (text) => {
+hbs.registerHelper('changeToUpper', (text) => {
     return text.toUpperCase();
 });
 
 app.get('/', (req, res) => {
     res.render('home.hbs', {
         pageTitle: 'Home page',
-        welcomeMessage: 'welcome to pruthvi reddy'
+        welcomeMessage: 'welcome to my website'
     });
 });
 
@@ -51,8 +52,8 @@ app.get('/bad', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log('Server is up and running');
+app.listen(port, () => {
+    console.log(`Server is up and running on port: ${port}`);
 });
 
 // res.send({
